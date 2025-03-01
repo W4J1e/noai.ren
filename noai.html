@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>无爱.人</title>
+    <style>
+        :root {
+            --main-color: #4855EC;
+            --text-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            min-height: 100vh;
+            background: url('./nm.png') no-repeat center/cover fixed;
+            font-family: 'Microsoft YaHei', sans-serif;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* 左上角标题 */
+        .page-title {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: rgba(255,255,255,0.9);
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        /* 主体容器 */
+        .container {
+            width: 90%;
+            max-width: 900px;
+            min-height: 500px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            margin: 80px auto 100px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-grow: 1;
+        }
+
+        @media (min-width: 769px) {
+            .container {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                margin: 0;
+            }
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                margin: 60px auto 80px;
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+                top: 10px;
+                left: 10px;
+            }
+        }
+
+        /* 左侧区域 */
+        .left-section {
+            flex: 0 0 35%;
+            padding: 30px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 200px;
+            height: 200px;
+            max-width: 80%;
+            border-radius: 50%;
+            background: url('./LonelyGod.png') center/cover;
+            margin: 20px auto;
+            border: 3px solid rgba(255,255,255,0.8);
+        }
+
+        /* 个人信息 */
+        .profile-info {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* 渐变分隔线 */
+        .left-section::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 70%;
+            background: linear-gradient(
+                to bottom,
+                transparent 10%,
+                rgba(0,0,0,0.2) 50%,
+                transparent 90%
+            );
+        }
+
+        @media (max-width: 768px) {
+            .left-section::after {
+                display: none;
+            }
+
+            .left-section {
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+                padding-bottom: 20px;
+            }
+        }
+
+        /* 右侧内容 */
+        .right-section {
+            flex: 1;
+            padding: 30px;
+            min-width: 300px;
+        }
+
+        .info-title {
+            color: var(--text-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--main-color);
+            padding-left: 15px;
+        }
+
+        /* 域名列表带分隔线 */
+        .domain-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .domain-list li {
+            padding: 0.8rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .domain-list li::before {
+            content: '🌐';
+            position: absolute;
+            left: 0;
+            filter: hue-rotate(200deg);
+        }
+        /* 页脚样式 */
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.3);
+            border-top: 1px solid rgba(255,255,255,0.2);
+            z-index: 100;
+        }
+
+        footer p {
+            margin: 5px 0;
+            line-height: 1.4;
+        }
+
+        /* 移动端调整 */
+        @media (max-width: 480px) {
+            .info-title {
+                font-size: 1.5rem;
+            }
+
+            .domain-list li {
+                font-size: 1rem;
+                padding-left: 1.2rem;
+                flex-wrap: wrap;
+            }
+
+            .domain-list li::after {
+                display: none;
+            }
+
+            .profile-info {
+                font-size: 0.95rem;
+            }
+
+            footer {
+                font-size: 0.8rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="page-title">无爱.人</h1>
+    
+    <div class="container">
+        <div class="left-section">
+            <div class="avatar"></div>
+            <div class="profile-info">
+                <p>♂ W4J1e</p>
+                <p>📍 重·庆</p>
+                <p>🚀 梦游到宇宙</p>
+            </div>
+        </div>
+        
+        <div class="right-section">
+            <h2 class="info-title">LonelyGod</h2>
+            <p>一边热爱自由，一边享受孤独，一边患得患失</p>
+            <br>
+            <h3 class="info-title">持有或有过的域名</h3>
+            <ul class="domain-list">
+                <li><a href="https://hin.cool">hin.cool | 个人博客</a></li>
+                <li><a href="https://noai.ren">noai.ren | 无爱.人</a></li>
+                <li><a href="https://moos.top">moos.top | 备用域名</a></li>
+                <li><a href="https://7n7.top">7n7.top | 7n7</a></span></li>                    
+                <li>7u7.top | 7u7</li>
+                <li>nmsl.la | 柠檬酸了啦</span></li>
+                <li>xswl.ru | XSWL</span></li>  
+                <li>hiw.ink | 买无忧送的没用的域名</span></li>
+                <li>w4j1e.xyz | 写独立博客的第一个域名</span></li>               
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>Designed with ♥ by W4J1e | &copy; 2020-2025 无爱.人 版权所有</p>
+    </footer>
+</body>
+</html>
